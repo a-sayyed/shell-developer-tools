@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 # --- aliases ---
 alias ll="ls -la"
 
@@ -30,6 +32,7 @@ function clone() {
       return 1
     fi
 
+    echo "$PARENT/$FOLDER"
     git clone $1 "$PARENT/$FOLDER"
 }
 
