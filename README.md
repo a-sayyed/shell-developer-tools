@@ -1,4 +1,4 @@
-# macos-zsh-developer-functions
+# shell-developer-functions
 A collection of useful functions and aliases for software development
 
 ## Installation
