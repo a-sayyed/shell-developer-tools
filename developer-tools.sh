@@ -7,7 +7,7 @@ alias k8s=kubectl
 # --- aliases ---
 
 # --- git ---
-def clone() {
+function clone() {
     PARENT_REGEX="^git@.*:(.*)\/.*.git"
 
     PARENT=
@@ -33,7 +33,7 @@ def clone() {
     git clone $1 "$PARENT/$FOLDER"
 }
 
-def master() {
+function master() {
     if [ -d "$PWD/.git" ]; then
         git checkout master
         return 0
@@ -45,7 +45,7 @@ def master() {
     done
 }
 
-def cleanup_git_branches() {
+function cleanup_git_branches() {
     if [ -d "$PWD/.git" ]; then
         _cleanup_git_branches $PWD
         return 0
@@ -57,7 +57,7 @@ def cleanup_git_branches() {
     done
 }
 
-def _cleanup_git_branches() {
+function _cleanup_git_branches() {
     REPO=$1
     
     echo "Cleaning up already merged branches in $REPO ..."
@@ -67,7 +67,7 @@ def _cleanup_git_branches() {
 # --- git ---
 
 # --- helpers ---
-def foreach_file_of_type_in_directory() {
+function foreach_file_of_type_in_directory() {
     read "TYPE?Type(default is *): "
     read "DIRECTORY?Directory(default is \$PWD): "
     read "COMMAND?Foreach file: \$FILE -> "
@@ -86,12 +86,12 @@ function for_each_folder() {
  done
 }
 
-def kill_process_by_port() {
+function kill_process_by_port() {
     PORT=$1
     kill $(lsof -t -i:$PORT)
 }
 
-def jwt() {
+function jwt() {
     jq -R 'split(".") | .[1] | @base64d | fromjson' <<< $1
 }
 # --- helpers ---
