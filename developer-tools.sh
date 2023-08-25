@@ -1,13 +1,9 @@
 # --- aliases ---
-alias python=/usr/bin/python3
 alias ll="ls -la"
 
 # k8s
 alias k=kubectl
 alias k8s=kubectl
-
-# mvn
-alias fmt="mvn com.spotify.fmt:fmt-maven-plugin:format"
 # --- aliases ---
 
 # --- git ---
@@ -95,12 +91,7 @@ def kill_process_by_port() {
     kill $(lsof -t -i:$PORT)
 }
 
-def video_to_gif() {
-    ffmpeg -i "$1" -filter:v fps=fps=10 "$(basename $1).gif" && gifsicle -O3 "$(basename $1).gif" -o "$(basename $1).gif"
-}
-
 def jwt() {
     jq -R 'split(".") | .[1] | @base64d | fromjson' <<< $1
 }
-
 # --- helpers ---
